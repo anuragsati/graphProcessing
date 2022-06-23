@@ -10,7 +10,7 @@
 This app helps you easily visualize graph Generation.
 This app was built as an assignment for summer intern position at IIT KGP.
 
-[![graphProcessing Screenshot][product-screenshot]](https://anuragsati.github.io/visual-pathfinder/)
+[![graphProcessing Screenshot][product-screenshot]](https://anuragsati.github.io/graphProcessing/)
 
 
 <!-- CONTACT -->
