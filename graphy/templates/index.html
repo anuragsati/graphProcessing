@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>graphProcessing</title>
+
+    <style>
+        :root{
+            --text-dark: #191a19d5;
+            --bg-light: #edf5e1;
+        }
+
+        body{
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+    </style>
+
+</head>
+<body>
+    <!-- {% for item in data %}
+        <p>{{item.startNode}}  {{item.endNode}}</p>
+    {% endfor %} -->
+
+    <div class="px-5 d-flex align-items-center">
+        <h1 class="my-3 font-weight-bold">graphProcessing</h1>
+    </div>
+
+    <div id="mainBody" class="d-flex flex-row justify-content-around pt-3">
+        <div width="60vw" class="d-flex justify-content-center align-items-center">
+            {% block body %}
+                {% if not isEmpty %}
+                    {% include 'pvis_graph_file.html' %}
+                {% else %}
+                    {% include 'empty_pyvis.html' %}
+                {% endif %}
+            {% endblock %}
+        </div>
+
+        <div id="formSection">
+            <form method="POST" action="{% url 'index' %}" class="mb-2">
+                {% csrf_token %}
+                <h3>Add Edge :</h3>
+                <div class="row mb-3">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Start Node" name="startNode">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="End Node" name="endNode">
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <button type="submit" style="margin-right: 10px" class="btn btn-success btn-primary">Add Edge</button>
+                </div>
+            </form>
+            <form method="GET" action="{% url 'clearGraph' %}">
+                <button type="submit" class="btn btn-danger btn-primary">Clear Graph</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
